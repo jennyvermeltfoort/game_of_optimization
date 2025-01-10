@@ -354,13 +354,13 @@ void generate_iteration(void) {
     world = world_buffer;
     world_buffer = buf;
 
-    for (uint32_t y = 0; y < SIZE_WORLD_Y_CONF; y++) {
-        for (uint32_t x = 0; x < SIZE_WORLD_X_CONF; x++) {
-            segment_chunk_t chunk = {};
-            generate_segment_chunks(world_buffer, chunk, x,
-                                    y * GEN_CHUNK_SIZE);
-            set_cell_chunk(world, chunk, x, y * GEN_CHUNK_SIZE);
-        }
+    for (uint32_t i = 0; i < SIZE_WORLD_Y_CONF * SIZE_WORLD_X_CONF;
+         i++) {
+        uint32_t xpos = i % SIZE_WORLD_X_CONF;
+        uint32_t ypos = (i / SIZE_WORLD_X_CONF) * GEN_CHUNK_SIZE;
+        segment_chunk_t chunk = {};
+        generate_segment_chunks(world_buffer, chunk, xpos, ypos);
+        set_cell_chunk(world, chunk, xpos, ypos);
     }
 }
 

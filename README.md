@@ -1,6 +1,6 @@
 An optimized Game of Life generation. 
 Data structures are optimized to fit into the L1 cache and the `generate_iteration` routine makes use of AVX2 to calculate 8 lines of segments at a time.
-Other tricks are used to prevent code branching making the loop more efficient. 
+Other tricks are used to reduce code branching making the loop more efficient. 
 The `generate_iteration` routine could even run threaded because segments are independently calculated.
 I realize that this routine does not necessarily need this much optimization -- the code prints the world to the screen faster than what the eye can see --
 it was however a fun and insightful exercise.

@@ -4,7 +4,7 @@ CFLAGS  = -mavx2 -O5
 SRC 	= src
 TARGET 	= life.bin
 
-life.bin:
+life.bin: src/main.c
 	$(CC) $(CFLAGS) -o $(TARGET) $(SRC)/main.c
 
 all: life.bin
